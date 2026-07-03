@@ -19,7 +19,7 @@ def list_and_tuple() -> None:
     print(f"tuple (fixed shape): {point}")
 
     try:
-        point[0] = 99  # type: ignore[index]
+        point[0] = 99  # type: ignore[index] # pylint: disable=unsupported-assignment-operation
     except TypeError as exc:
         print(f"tuples are immutable: {exc}")
 
