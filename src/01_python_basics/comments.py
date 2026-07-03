@@ -8,9 +8,9 @@ Run:
 
 # 1. Line comment: explains the line(s) below it.
 # Calculate the area of a rectangle.
-width = 4
-height = 5
-area = width * height  # 2. Inline comment: explains this specific line
+WIDTH = 4
+HEIGHT = 5
+AREA = WIDTH * HEIGHT  # 2. Inline comment: explains this specific line
 
 """
 3. Block comment (technically a standalone string literal, but commonly
@@ -26,7 +26,7 @@ def describe_area() -> None:
     *what a function/class/module does*, comments for *why the code does
     what it does*.
     """
-    print(f"A {width}x{height} rectangle has an area of {area}.")
+    print(f"A {WIDTH}x{HEIGHT} rectangle has an area of {AREA}.")
 
 
 if __name__ == "__main__":

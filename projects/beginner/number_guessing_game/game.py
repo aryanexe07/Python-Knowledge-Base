@@ -35,6 +35,7 @@ class GameResult:
 
 
 def choose_difficulty() -> Difficulty:
+    """Prompt the player to choose a difficulty level."""
     prompt = "Choose difficulty [easy / medium / hard] (default medium): "
     while True:
         choice = input(prompt).strip().lower() or "medium"
@@ -45,19 +46,21 @@ def choose_difficulty() -> Difficulty:
 
 
 def get_guess(range_max: int, attempts_left: int) -> int:
+    """Request and validate a numeric guess from the player."""
     while True:
         raw = input(f"Guess a number (1-{range_max}) [{attempts_left} attempts left]: ").strip()
         if not raw.lstrip("-").isdigit():
             print("Please enter a whole number.")
             continue
         value = int(raw)
-        if not (1 <= value <= range_max):
+        if not 1 <= value <= range_max:
             print(f"Your guess must be between 1 and {range_max}.")
             continue
         return value
 
 
 def play_round(difficulty: Difficulty) -> GameResult:
+    """Play one round of the game at the chosen difficulty."""
     range_max, max_attempts = DIFFICULTY_SETTINGS[difficulty]
     secret = random.randint(1, range_max)
     guesses: list[int] = []
@@ -76,6 +79,7 @@ def play_round(difficulty: Difficulty) -> GameResult:
 
 
 def print_result(result: GameResult) -> None:
+    """Display the player's result for the current round."""
     if result.won:
         print(f"\n🎉 Correct! The number was {result.secret_number}.")
         print(f"You got it in {result.attempts_used} attempt(s).")
@@ -85,6 +89,7 @@ def print_result(result: GameResult) -> None:
 
 
 def main() -> None:
+    """Run the main game loop and display best scores."""
     print("=== Number Guessing Game ===\n")
     best_scores: dict[Difficulty, int] = {}
 

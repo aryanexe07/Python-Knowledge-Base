@@ -9,6 +9,7 @@ Run:
 
 
 def basic_assignment() -> None:
+    """Show basic assignment of simple values."""
     x = 10
     name = "Aryan"
     is_active = True
@@ -16,11 +17,13 @@ def basic_assignment() -> None:
 
 
 def multiple_assignment() -> None:
+    """Show multiple assignment with tuple unpacking."""
     a, b, c = 1, 2, 3
     print(f"a={a}, b={b}, c={c}")
 
 
 def chained_assignment_pitfall() -> None:
+    """Show the difference between immutable and mutable chained assignment."""
     # Safe: integers are immutable
     x = y = 0
     x += 1
@@ -33,6 +36,7 @@ def chained_assignment_pitfall() -> None:
 
 
 def augmented_assignment() -> None:
+    """Show augmented assignment inside a loop."""
     count = 0
     for _ in range(5):
         count += 1
@@ -40,6 +44,7 @@ def augmented_assignment() -> None:
 
 
 def swap_without_temp() -> None:
+    """Swap two values without using a temporary variable."""
     a, b = 1, 2
     a, b = b, a  # tuple unpacking swap, no temp variable needed
     print(f"swapped: a={a}, b={b}")

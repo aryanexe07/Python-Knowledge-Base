@@ -72,24 +72,29 @@ class Parser:
     """
 
     def __init__(self, tokens: list[Token]) -> None:
+        """Initialize parser state with a token stream."""
         self.tokens = tokens
         self.pos = 0
 
     def _peek(self) -> Token:
+        """Return the current token without consuming it."""
         return self.tokens[self.pos]
 
     def _advance(self) -> Token:
+        """Consume and return the current token."""
         tok = self.tokens[self.pos]
         self.pos += 1
         return tok
 
     def parse(self) -> float:
+        """Parse a full expression and ensure the token stream is exhausted."""
         result = self._expr()
         if self._peek().kind != "END":
             raise CalculatorError(f"Unexpected token: {self._peek().value!r}")
         return result
 
     def _expr(self) -> float:
+        """Parse addition and subtraction expressions."""
         value = self._term()
         while self._peek().kind == "OP" and self._peek().value in ("+", "-"):
             op = self._advance().value
@@ -98,6 +103,7 @@ class Parser:
         return value
 
     def _term(self) -> float:
+        """Parse multiplication, division, floor division, and modulo."""
         value = self._power()
         while self._peek().kind == "OP" and self._peek().value in ("*", "/", "//", "%"):
             op = self._advance().value
@@ -117,6 +123,7 @@ class Parser:
         return value
 
     def _power(self) -> float:
+        """Parse exponentiation, which is right-associative."""
         value = self._unary()
         if self._peek().kind == "OP" and self._peek().value == "**":
             self._advance()
@@ -125,6 +132,7 @@ class Parser:
         return value
 
     def _unary(self) -> float:
+        """Parse unary plus and minus operators."""
         if self._peek().kind == "OP" and self._peek().value in ("+", "-"):
             op = self._advance().value
             value = self._unary()
@@ -132,6 +140,7 @@ class Parser:
         return self._atom()
 
     def _atom(self) -> float:
+        """Parse a numeric literal or parenthesized subexpression."""
         tok = self._peek()
         if tok.kind == "NUM":
             self._advance()
@@ -147,15 +156,18 @@ class Parser:
 
 
 def evaluate(expression: str) -> float:
+    """Evaluate a calculator expression string and return a numeric result."""
     tokens = tokenize(expression)
     return Parser(tokens).parse()
 
 
 def format_result(value: float) -> str:
+    """Format numeric results with integer representation when possible."""
     return str(int(value)) if value == int(value) else str(value)
 
 
 def run_repl() -> None:
+    """Enter a read-eval-print loop for interactive calculator input."""
     print("Calculator — type an expression, or 'quit' to exit.")
     while True:
         try:
@@ -175,6 +187,7 @@ def run_repl() -> None:
 
 
 def main() -> None:
+    """Run the calculator using command-line arguments or interactive mode."""
     if len(sys.argv) > 1:
         expression = " ".join(sys.argv[1:])
         try:

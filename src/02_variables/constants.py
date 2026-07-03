@@ -29,15 +29,15 @@ class Status(Enum):
 
 
 def main() -> None:
+    """Show constant naming and explain that Python does not enforce immutability."""
     print(f"App: {APP_NAME}")
     print(f"Max retries: {MAX_RETRIES}")
     print(f"Supported formats: {SUPPORTED_FORMATS}")
     print(f"Status example: {Status.RUNNING} (value={Status.RUNNING.value})")
 
-    # Nothing stops reassignment at runtime -- Python trusts the developer.
-    global MAX_RETRIES
-    MAX_RETRIES = 5
-    print(f"MAX_RETRIES can technically be reassigned: {MAX_RETRIES}")
+    # Python does not enforce constants; this is only a naming convention.
+    highlighted_retries = MAX_RETRIES
+    print(f"MAX_RETRIES is a convention, not enforced: {highlighted_retries}")
 
 
 if __name__ == "__main__":

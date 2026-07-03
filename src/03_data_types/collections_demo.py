@@ -9,6 +9,7 @@ Run:
 
 
 def list_and_tuple() -> None:
+    """Show mutable list behavior and tuple immutability."""
     numbers: list[int] = [4, 2, 8, 1]
     numbers.append(10)
     numbers.sort()
@@ -24,15 +25,18 @@ def list_and_tuple() -> None:
 
 
 def dict_and_set() -> None:
+    """Show dictionary updates, set deduplication, and unhashable key errors."""
     scores: dict[str, int] = {"alice": 90, "bob": 85}
     scores["carol"] = 95
     print(f"dict: {scores}")
 
-    unique_ids: set[int] = {1, 2, 2, 3, 3, 3}
+    unique_ids: set[int] = set([1, 2, 2, 3, 3, 3])
     print(f"set removes duplicates: {unique_ids}")
 
+    bad_key: list[int] = [1, 2]
     try:
-        bad_key: dict[list, str] = {[1, 2]: "value"}  # type: ignore[misc]
+        bad_dict: dict[object, str] = {}
+        bad_dict[bad_key] = "value"
     except TypeError as exc:
         print(f"lists can't be dict keys (unhashable): {exc}")
 

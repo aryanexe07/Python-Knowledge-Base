@@ -11,6 +11,7 @@ import math
 
 
 def numeric_types() -> None:
+    """Demonstrate numeric scalar types and their runtime behavior."""
     i: int = 42
     f: float = 3.14
     b: bool = True  # bool is a subclass of int: True == 1, False == 0
@@ -23,6 +24,7 @@ def numeric_types() -> None:
 
 
 def float_precision_pitfall() -> None:
+    """Show floating-point rounding issues and how to compare values safely."""
     result = 0.1 + 0.2
     print(f"0.1 + 0.2 = {result}")
     print(f"0.1 + 0.2 == 0.3 -> {result == 0.3}")  # False, due to binary floats
@@ -30,6 +32,7 @@ def float_precision_pitfall() -> None:
 
 
 def string_basics() -> None:
+    """Demonstrate common string operations and immutability."""
     s = "Python"
     print(f"upper: {s.upper()}")
     print(f"lower: {s.lower()}")
@@ -43,6 +46,7 @@ def string_basics() -> None:
 
 
 def none_type() -> None:
+    """Demonstrate the None singleton and its identity comparison."""
     value = None
     print(f"value is None -> {value is None}")  # always use `is` for None checks
 
