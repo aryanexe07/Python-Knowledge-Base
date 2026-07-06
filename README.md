@@ -52,7 +52,7 @@ flowchart LR
 | 01 | Python Basics | ✅ | ✅ | Complete |
 | 02 | Variables | ✅ | ✅ | Complete |
 | 03 | Data Types | ✅ | ✅ | Complete |
-| 04 | Operators | 🚧 | 🚧 | Planned |
+| 04 | Operators | ✅ | ✅ | Complete |
 | 05 | Control Flow | 🚧 | 🚧 | Planned |
 | 06 | Functions | 🚧 | 🚧 | Planned |
 | 07 | Modules | 🚧 | 🚧 | Planned |
@@ -252,4 +252,3 @@ LeetCode: [aryanexe07](https://leetcode.com/aryanexe07)
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=radical)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=your-username&layout=compact&theme=radical)
-
